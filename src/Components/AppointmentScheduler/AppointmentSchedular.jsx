@@ -75,7 +75,7 @@ const localizer = momentLocalizer(moment);
 
   const closeModal = () => {
     setModalOpen(false);
-    setSelectedSlot(null);
+    setSelectedSlot(null); 
     setSelectedEvent(null);
     setAppointmentTitle("");
   };
