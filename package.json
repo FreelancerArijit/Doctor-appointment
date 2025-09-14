@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.3",
+<<<<<<< HEAD
     "cors": "^2.8.5",
+=======
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
     "moment": "^2.30.1",
     "react": "^19.0.0",
     "react-big-calendar": "^1.18.0",
@@ -28,6 +31,10 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+<<<<<<< HEAD
     "vite": "^6.3.5"
+=======
+    "vite": "^6.2.0"
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
   }
 }

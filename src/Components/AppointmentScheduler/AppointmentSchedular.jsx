@@ -3,6 +3,7 @@ import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
+<<<<<<< HEAD
 const localizer = momentLocalizer(moment);
 
 function AppointmentScheduler() {
@@ -15,6 +16,29 @@ function AppointmentScheduler() {
   const [appointmentTitle, setAppointmentTitle] = useState("");
 
   // Load events from localStorage
+=======
+//localizer is used to handle date and time formatting in this case we used moment.js as localizer
+const localizer = momentLocalizer(moment);
+
+ function AppointmentScheduler() {
+    //used to store events as array of object in events and setEvents is a function used to update those events
+  const [events, setEvents] = useState([]);
+  // view is used to store current calender view and setView function to update those view
+  const [view, setView] = useState(Views.MONTH);
+  //stores the current selected date 
+  const [date, setDate] = useState(new Date());
+
+  //used to track when modal is visile and when modal is invisible
+  const [modalOpen, setModalOpen] = useState(false);
+  //store the timerange of the created event
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  //store the appointment users clicked on 
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  //stores the title of the appointment
+  const [appointmentTitle, setAppointmentTitle] = useState("");
+
+  // Load events from localStorage on mount
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
   useEffect(() => {
     const stored = localStorage.getItem("appointments");
     if (stored) {
@@ -27,6 +51,7 @@ function AppointmentScheduler() {
     localStorage.setItem("appointments", JSON.stringify(events));
   }, [events]);
 
+<<<<<<< HEAD
   // Open modal for empty slot
   const openModalForSlot = ({ start, end }) => {
     if (!start || !end) {
@@ -34,17 +59,27 @@ function AppointmentScheduler() {
       return;
     }
     setSelectedSlot({ start, end });
+=======
+  //function to open modal to create a new event
+  const openModalForSlot = (slot) => {
+    setSelectedSlot(slot);
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
     setAppointmentTitle("");
     setModalOpen(true);
   };
 
+<<<<<<< HEAD
   // Open modal for existing event
+=======
+  //function to open modal 
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
   const openModalForEvent = (event) => {
     setSelectedEvent(event);
     setAppointmentTitle(event.title);
     setModalOpen(true);
   };
 
+<<<<<<< HEAD
 
   const handleSave = () => {
     if (selectedSlot && appointmentTitle.trim()) {
@@ -82,11 +117,27 @@ function AppointmentScheduler() {
           evt === selectedEvent ? { ...evt, title: appointmentTitle } : evt
         )
       );
+=======
+  //function to create and edit an existing event
+  const handleSave = () => {   
+    if (selectedSlot && appointmentTitle.trim()) {
+      setEvents([...events, { ...selectedSlot, title: appointmentTitle }]);
+    }
+
+    
+    if (selectedEvent && appointmentTitle.trim()) {
+      setEvents(events.map(evt => evt === selectedEvent ? { ...evt, title: appointmentTitle } : evt));
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
     }
 
     closeModal();
   };
 
+<<<<<<< HEAD
+=======
+
+  //function to delete an existing event
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
   const handleDelete = () => {
     if (selectedEvent) {
       setEvents(events.filter(evt => evt !== selectedEvent));
@@ -96,7 +147,11 @@ function AppointmentScheduler() {
 
   const closeModal = () => {
     setModalOpen(false);
+<<<<<<< HEAD
     setSelectedSlot(null);
+=======
+    setSelectedSlot(null); 
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
     setSelectedEvent(null);
     setAppointmentTitle("");
   };
@@ -148,6 +203,7 @@ function AppointmentScheduler() {
             <h2 className="text-xl font-bold mb-4">
               {selectedEvent ? "Edit Appointment" : "New Appointment"}
             </h2>
+<<<<<<< HEAD
 
             {selectedSlot && (
               <p className="mb-2 text-gray-600">
@@ -161,6 +217,8 @@ function AppointmentScheduler() {
               </p>
             )}
 
+=======
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
             <input
               type="text"
               value={appointmentTitle}
@@ -197,5 +255,8 @@ function AppointmentScheduler() {
     </div>
   );
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7b684a650e1cd7203c80767056608e3e99827fd4
 export default AppointmentScheduler;
